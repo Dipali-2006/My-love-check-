@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="or">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="result">
+    <div class="container">
+        <h2>ତୁମ ଲଭ୍ ସ୍କୋର:</h2>
+        <div id="scoreDisplay">%</div>
+        <p id="message"></p>
+        <a href="index.html" class="btn">Try again</a>
+        <a href="https://wa.me/?text=ମୁଁ ଏଇ ଲଭ୍ କୁଇଜ୍ ଦେଖିଲି! ତୁମେ ମଧ୍ୟ ଦେଖ - [ADD YOUR LINK HERE]" target="_blank" class="btn">Share on WhatsApp</a>
+    </div>
+    <script>
+        const total = Object.keys(localStorage).reduce((sum, key) => sum + parseInt(localStorage[key] || 0), 0);
+        const percentage = Math.min(100, Math.round((total / 20) * 100));
+        document.getElementById("scoreDisplay").innerText = percentage + "%";
+
+        let message = "";
+        if (percentage >= 0 && percentage <= 15) message = "ତୁମେ ଆଡିକ୍ସନ ରେ ଅଛ ନିଜେ ଭିତରେ ଇମାଜିନ୍ କରୁଛ!";
+        else if (percentage <= 30) message = "ତୁମ ଲଭ୍ ଅଛି କିନ୍ତୁ ଭିତରେ ଲୁଚିଛ!";
+        else if (percentage <= 60) message = "ସେ ତୁମ ମନ ରେ ଅଛି ଓ ତୁମେ ତାକୁ ପସନ୍ଦ କରୁଛ!";
+        else message = "ତୁମେ ତାକୁ ଭଲ ପାଉଛ! ଏହା ସତ୍ୟ ମାନି ନିଅ!";
+
+        document.getElementById("message").innerText = message;
+    </script>
+</body>
+</html>
